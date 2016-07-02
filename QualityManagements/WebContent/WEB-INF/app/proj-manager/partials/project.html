@@ -1,0 +1,78 @@
+<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}"
+	close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert>
+<section id="cart_items">
+	<div class="container">
+		<div class="breadcrumbs">
+			<ol class="breadcrumb">
+				<li><a href="#">Home</a></li>
+				<li class="active">View Projects</li>
+			</ol>
+		</div>
+
+		<div class="table-responsive cart_info" data-ng-show="{{projs.size!=0}}" data-ng-init="refresh()">
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed" bordercolor="black">
+					<thead>
+						<tr class="cart_menu">
+							<td class="projectId">Project Id</td>
+							<td class="projectName">Project Name</td>
+							<td class="description">Project Type</td>
+						</tr>
+					</thead>
+				<tbody>
+					<tr data-ng-repeat="proj in projs">
+						
+                		
+                		<td>{{proj.projectId}}</td>
+                	
+                		
+                		<td>{{proj.projectName}}</td>
+                	
+                		
+                		<td>{{proj.description }}</td>
+                		<td>
+							<button class="btn btn-sm btn-danger"
+								data-ng-click="remove(proj)">Remove</button>
+							&nbsp;&nbsp;
+							<button class="btn btn-sm btn-warning" data-ng-click="updateTry(proj)">Update</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</div>
+	</div>
+</section>
+<!--/#cart_items-->
+<script type="text/ng-template" id="updateProjectConfirmationModal.html">
+ 	   <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="dismissConfirm()">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+           
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <h5>Do you want to update Project with the following details?</h5>
+                <table class="table table-bordered">
+					<tr>
+                		<td>Project ID</td>
+                		<td>{{project.projectId}}</td>
+                	</tr>
+                	<tr>
+                		<td>Project Name</td>
+                		<td><input type="text" value="{{project.projectName}}"/></td>
+                	</tr>
+                	<tr>
+                		<td>Project Description</td>
+                		<td><input type="text" value="{{project.description}}"/></td>
+                	</tr>
+                </table>
+            </div>
+           
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-ng-click="update(project)">yes</button>
+                <button type="button" class="btn btn-default" ng-click="dismissConfirm()">No! Wait</button>
+            </div>
+</script>

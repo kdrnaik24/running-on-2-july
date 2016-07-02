@@ -1,0 +1,53 @@
+<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}"
+	close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert>
+<div>
+	<div class="form-group" id="aDiv">
+		<div class="form-group" id="aDiv">
+			<div class="form-group">
+				<label for="Pname">Project Name:</label> <input type="text"
+					class="form-control" ng-model="proj.projectName" autofocus />
+			</div>
+			<div class="form-group">
+				<label for="Pdescription">Project Description :</label> <input type="text"
+					class="form-control" ng-model="proj.description" autofocus />
+			</div>
+				
+
+			<input type="submit" class="btn btn-primary" value="Add"
+				data-ng-click="openConfirm()"> <input type="reset"
+				class="btn btn-default" value="Clear">
+		</div>
+	</div>
+</div>
+
+<script type="text/ng-template" id="newProjectConfirmationModal.html">
+ 	   <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="dismissConfirm()">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+           
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <h5>Do you want to add a new Project with the following details?</h5>
+                <table class="table table-bordered">
+                	<tr>
+                		<td>Project Name</td>
+                		<td>{{proj.projectName}}</td>
+                	</tr>
+                	<tr>
+                		<td>Project Description</td>
+                		<td>{{proj.description}}</td>
+                	</tr>
+                	
+                </table>
+            </div>
+           
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-ng-click="add()">yes</button>
+                <button type="button" class="btn btn-default" ng-click="dismissConfirm()">No! Wait</button>
+            </div>
+</script>
+
+
